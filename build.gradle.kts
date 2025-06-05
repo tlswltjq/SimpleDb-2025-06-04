@@ -1,6 +1,5 @@
 plugins {
     id("java")
-    kotlin("jvm") version "2.1.21"
 }
 
 group = "com"
@@ -11,16 +10,20 @@ repositories {
 }
 
 dependencies {
+    compileOnly("org.projectlombok:lombok:1.18.38")
+    annotationProcessor("org.projectlombok:lombok:1.18.38")
+
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 
+    implementation("com.mysql:mysql-connector-j:9.3.0")
+
     testImplementation("org.assertj:assertj-core:3.27.3")
-    implementation(kotlin("stdlib-jdk8"))
+
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.19.0")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.19.0")
 }
 
 tasks.test {
     useJUnitPlatform()
-}
-kotlin {
-    jvmToolchain(21)
 }
